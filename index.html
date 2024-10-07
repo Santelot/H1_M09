@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-7').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M09</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity1')">
+        <div class="title">
+            <span>🌟 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Bienvenida y estado de ánimo antes de iniciar la misión</div>
+    </div>
+    <div id="introActivity1" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hola, Genios. Hoy vamos a aprender cómo mejorar nuestras interacciones con la IA usando técnicas avanzadas de prompting. ¡Empecemos!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo están?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de entrar en el mundo de los prompts de rol, quiero saber cómo se sienten hoy. Si están emocionados, hagan un pequeño salto en su lugar. Si están un poco cansados, toquen su cabeza con ambas manos.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Como siempre, juntemos nuestras manos en agradecimiento por la oportunidad de aprender algo nuevo hoy. ¡Gracias por asistir, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy tenemos tres objetivos importantes: 1. Explorar la aplicación de prompts de rol en la IA. 2. Analizar cómo los prompts de rol mejoran la precisión de las respuestas. 3. Comparar respuestas de IA bajo distintos roles para obtener diferentes perspectivas.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity2')">
+        <div class="title">
+            <span>🚀 Actividad 2: Innovación del Día (3 pasos)</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Explorando herramientas de prompts de rol</div>
+    </div>
+    <div id="introActivity2" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Innovación del Día"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy vamos a ver una herramienta que usa prompts de rol para crear contenido personalizado. Se llama Copy.ai y puede ajustar el tono y enfoque según el público. Vamos a ver cómo esto puede ayudarnos a personalizar las interacciones con IA.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 7 "Demostración de Copy.ai"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Copy.ai nos permite ajustar cómo la IA responde o genera contenido dependiendo del rol que le asignemos. Vamos a ver un ejemplo de cómo se genera contenido para marketing usando diferentes roles como 'Asesor' o 'Experto en redes sociales'.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 8 "Reflexión sobre Copy.ai"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¿Qué opinan? Copy.ai es un ejemplo de cómo podemos ajustar las interacciones con la IA según el rol que le asignemos. ¿Cómo creen que esto podría mejorar el contenido que generamos o las respuestas que obtenemos de una IA en diferentes situaciones?
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (13 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity3')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym (13 pasos)</span>
+            <span>⏰ Tiempo: 14.5 minutos</span>
+        </div>
+        <div class="subtitle">Explorando técnicas avanzadas de prompting de rol</div>
+    </div>
+    <div id="introActivity3" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar Diapositiva 8 "Introducción a Prompting de Rol"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy vamos a conocer una técnica llamada 'Prompting de Rol'. Esta técnica es muy útil para controlar el estilo y la precisión de las respuestas que nos da la IA. Pongan atención porque dentro de lo que voy a explicar hay un Easter Egg y al final de la misión voy a regalar Mon-e a quien me logre contestar una pregunta. ¿Alguna vez han deseado que la IA actúe como un experto en algo? Pues, con esta técnica, eso es posible. Veamos cómo funciona.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 9 "Asignando Roles a la IA"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Asignar un rol a la IA es muy sencillo. Simplemente le dices que actúe como algo o alguien específico. Por ejemplo, podrías decirle que 'actúe como un crítico de comida' o 'como un detective'. Esto cambia el estilo de la respuesta y la hace más precisa para la tarea que le pediste.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 10 "Modificación del Estilo de Texto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Una de las formas más comunes de usar el prompting de rol es para cambiar el estilo de un texto. Esto permite que la IA escriba como si fuera una persona específica o actuando de cierta manera. Por ejemplo, podrías hacer que la IA escriba una reseña de comida como si fuera un crítico en una revista importante.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1.5 minutos): Proyectar Diapositiva 11 "Ejemplo: Reseña Sin Rol"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Aquí tenemos un ejemplo de una reseña de una pizzería sin asignar ningún rol a la IA. Como pueden ver, es una reseña bastante genérica: 'La pizza estaba deliciosa, con una base crujiente y un servicio excelente'. Ahora veamos qué sucede cuando le damos un rol específico a la IA.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1.5 minutos): Proyectar Diapositiva 12 "Ejemplo: Reseña con Rol de Crítico de Comida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora, al pedirle a la IA que sea un 'crítico de comida', podemos ver un cambio notable en el estilo de la reseña. La descripción es más detallada, enfocándose en el sabor, la textura, y la experiencia general del restaurante. Esto añade más profundidad y profesionalismo al texto.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1.5 minutos): Proyectar Diapositiva 13 "Rol: Crítico de la Guía Michelin"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Llevemos esto un paso más allá. Ahora le pedimos a la IA que escriba la reseña como un 'crítico de la Guía Michelin'. Al hacerlo, el tono es aún más formal y profesional, con una atención al detalle que resalta la calidad y experiencia culinaria del lugar. ¿Han oído hablar de las estrellas Michelin? Las estrellas Michelin vienen de una guía creada por la marca de neumáticos Michelin en 1900 para ayudar a los conductores a encontrar buenos lugares para comer mientras viajaban. Lo curioso es que, con el tiempo, se volvieron el máximo premio en gastronomía, calificando a los mejores restaurantes con una, dos o tres estrellas, ¡todo gracias a una guía de viajes hecha por fabricantes de llantas!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1 minuto): Proyectar Diapositiva 14 "Ejemplo: Correo Electrónico Sin Rol"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                El prompting de rol no solo se usa en reseñas, también es útil en otras tareas, como la redacción de correos electrónicos. Aquí tenemos un ejemplo de un correo electrónico sin un rol específico: es informativo, pero podría mejorar. Ahora veamos cómo cambia con diferentes roles.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1 minuto): Proyectar Diapositiva 15 "Rol: Especialista en Comunicaciones"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora pedimos que la IA actúe como un 'especialista en comunicaciones'. Noten cómo el tono se vuelve más profesional y directo, enfocado en informar claramente al cliente sobre el retraso en la entrega de un pedido.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (1 minuto): Proyectar Diapositiva 16 "Rol: Experto en Marketing"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Si cambiamos el rol a 'experto en marketing', el correo adquiere un tono más persuasivo y positivo, haciendo que el retraso parezca una oportunidad en lugar de un problema. Esto muestra cómo el rol puede influir en el enfoque y tono de la comunicación.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (1 minuto): Proyectar Diapositiva 17 "Asignando Múltiples Roles"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                También podemos combinar varios roles en un solo prompt para obtener respuestas aún más especializadas. Por ejemplo, podríamos pedirle a la IA que actúe como un 'astrofísico brillante y periodista científico' para explicar temas complejos de manera simple pero precisa.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (1 minuto): Proyectar Diapositiva 18 "Mejorando la Precisión con Roles"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Además de cambiar el estilo del texto, el prompting de rol también puede mejorar la precisión de las respuestas de la IA. Al darle un rol especializado, como 'profesor de física cuántica para niños', obtenemos respuestas más ajustadas y adecuadas al público objetivo.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (1 minuto): Proyectar Diapositiva 19 "Reflexión sobre Prompting de Rol"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Como hemos visto, asignar roles a la IA no solo cambia el estilo de sus respuestas, sino que también mejora la precisión y relevancia. Esta técnica es muy poderosa cuando queremos obtener resultados específicos o adecuados para diferentes contextos y audiencias.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 13 (0.5 minutos): Proyectar Diapositiva 20 "Revisión de Objetivos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hasta ahora, hemos logrado dos de nuestros objetivos: 1. Hemos explorado cómo se aplican los prompts de rol en la IA. 2. Hemos visto cómo los roles mejoran la precisión de las respuestas de la IA. Sigamos adelante.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (3 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity4')">
+        <div class="title">
+            <span>🧘 Actividad 4: State Change (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Pies en el Piso - Relajación y concentración</div>
+    </div>
+    <div id="introActivity4" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 21 "Pies en el Piso"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a realizar una actividad rápida llamada 'Pies en el Piso'. Siéntense con los pies firmemente en el piso y sientan el contacto con el suelo durante 1 minuto. Esto nos ayudará a reconectar y concentrarnos en el presente.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 22 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 23 "Reflexión sobre Pies en el Piso"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Esta actividad nos ayuda a sentirnos más conectados con el presente. Al enfocarnos en el contacto de nuestros pies con el suelo, promovemos la grounding, que nos permite estar más conscientes de nuestro entorno y mejor preparados para continuar.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (4 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity5')">
+        <div class="title">
+            <span>👥 Actividad 5: Team Gnius (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Formación de Nuevas Parejas</div>
+    </div>
+    <div id="introActivity5" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 24 "Formación de Nuevas Parejas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, para el reto de hoy vamos a trabajar en parejas, pero deben elegir a alguien con quien no hayan trabajado en la clase anterior. Tienen 1 minuto para encontrar a su nuevo compañero.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 25 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 26 "Recoger las Magic Tablets"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora que ya tienen a su compañero, les pido que un representante de cada pareja vaya a recoger su Magic Tablet. Tienen 1 minuto para hacerlo.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 27 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 6 (19 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity6')">
+        <div class="title">
+            <span>🧠 Actividad 6: Challenge (19 pasos)</span>
+            <span>⏰ Tiempo: 15 minutos</span>
+        </div>
+        <div class="subtitle">Comparar respuestas de IA bajo distintos roles</div>
+    </div>
+    <div id="introActivity6" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 28 "Challenge - Título"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy vamos a realizar un desafío donde verán cómo el prompting de rol puede influir en las creaciones de la IA. Usaremos ChatGPT para que actúe como dos artistas diferentes y completaremos una tarea creativa. Cada uno de ustedes va a abrir su propia sesión de ChatGPT en su dispositivo, de manera que puedan ver la comparación de las respuestas entre ambos roles de manera simultánea. A pesar de trabajar en diferentes dispositivos, parte del éxito del ejercicio depende de nuestra capacidad de comparar los roles, por lo que asegúrense de usar exactamente los mismos prompts en ambos chats, salvo por el rol. ¡Vamos a empezar!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 29 "Seleccionar Brief Creativo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Primero, elijan uno de los tres briefs creativos: escribir la letra de una canción, componer una historia corta o desarrollar un concepto para una obra visual. Tienen 1 minuto para decidir.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 30 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 31 "Seleccionar Artistas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora, elijan dos artistas famosos relacionados con el brief que seleccionaron. Por ejemplo, pueden elegir a Taylor Swift y Kendrick Lamar si eligieron la canción, a Frida Kahlo y Banksy si seleccionaron el concepto visual, o a J.K. Rowling y Stephen King si seleccionaron la historia corta. Tienen 1 minuto para decidir.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar Diapositiva 32 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 33 "Crear con Roles"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Usen el siguiente prompt con ChatGPT para ambos artistas: 'Eres [Artista 1] y [Artista 2]. Por favor, [descripción breve de la tarea].' Deberán generar el trabajo con los dos artistas simultáneamente y comparar los resultados.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (3 minutos): Proyectar Diapositiva 34 "Cronómetro - 3 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (0.5 minutos): Proyectar Diapositiva 35 "Primer Follow-Up"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Analicen los resultados iniciales y pidan a la IA que refine o expanda el trabajo con un nuevo prompt. Les dejo las opciones de prompts de acuerdo al Brief Creativo que seleccionaron.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (2 minutos): Proyectar Diapositiva 36 "Cronómetro - 2 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (0.5 minutos): Proyectar Diapositiva 37 "Segundo Follow-Up"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Realicen otro refinamiento, enfocándose en los elementos únicos del estilo del artista. Les dejo las opciones de prompts de acuerdo al Brief Creativo que seleccionaron.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (2 minutos): Proyectar Diapositiva 38 "Cronómetro - 2 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (0.5 minutos): Proyectar Diapositiva 39 "Refinamiento Iterativo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora exploren con sus propios prompts y refinen el trabajo como consideren necesario. Pueden cambiar el tono, añadir detalles o ajustar cualquier parte para que sea coherente con el estilo del artista. Recuerden que la única regla es usar el mismo prompt para ambos chats en todo momento y ver a dónde nos lleva cada uno.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 13 (5 minutos): Proyectar Diapositiva 40 "Cronómetro - 5 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 14 (0.5 minutos): Proyectar Diapositiva 41 "Comparación de Resultados"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora comparen los trabajos generados por los dos artistas. Observen las diferencias en tono, estilo y enfoque. Reflexionen sobre cómo el prompting de rol influenció la creación de la IA.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 15 (1 minuto): Proyectar Diapositiva 42 "Cronómetro - 1 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 16 (0.5 minutos): Proyectar Diapositiva 43 "Presentación de Resultados"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Vamos a seleccionar a dos parejas que hayan trabajado con diferentes briefs para que presenten sus resultados y nos expliquen qué observaron en el proceso.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 17 (3 minutos): Proyectar Diapositiva 44 "Presentaciones"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Vamos a escuchar primero a la primera pareja. ¡Adelante!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 18 (0.5 minutos): Proyectar Diapositiva 45 "Revisión de Objetivos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hemos completado todos nuestros objetivos: hemos visto cómo aplicar prompts de rol y hemos observado cómo estos pueden influenciar el resultado creativo de la IA. ¡Gran trabajo, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 19 (0.5 minutos): Proyectar Diapositiva 46 "You've got Mon-e"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¡Felicidades, Genios! Han trabajado muy bien el día de hoy. Aquí está su recompensa: ¡Han ganado Mon-e!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 7 (3 pasos) -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity7')">
+        <div class="title">
+            <span>🎉 Actividad 7: Easter Egg (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Recompensa por prestar atención durante la clase</div>
+    </div>
+    <div id="introActivity7" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 47 "Easter Egg - Pregunta"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, es hora de ver quién ha estado prestando atención. La siguiente diapositiva tiene una pregunta sobre algo que discutimos hoy. Voy a premiar con Mon-e a las tres primeras personas que me den la respuesta correcta. Recuerden la dinámica: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Yo seleccionaré a 3 de ustedes. ¿Listos?
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 48 "Pregunta: ¿De dónde salió la calificación para restaurantes 'Estrellas Michelin'?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Uno, dos, tres. Levanten la mano si saben la respuesta. ¡Muy bien! Vamos a escuchar lo que tienen que decir.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 49 "Respuesta Correcta"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Uno, ven y dime la respuesta al oído. Ahora tú, dos. Y por último, el tres. La respuesta correcta es 'Las estrellas Michelin vienen de una guía creada por la marca de neumáticos Michelin en 1900 para ayudar a los conductores a encontrar buenos lugares para comer mientras viajaban'. ¡Muy bien, a los ganadores les toca Mon-e!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 8 (1 paso) -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity8')">
+        <div class="title">
+            <span>🛡️ Actividad 8: Honor de Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 0.5 minutos</span>
+        </div>
+        <div class="subtitle">Cierre y agradecimiento por el esfuerzo</div>
+    </div>
+    <div id="introActivity8" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 50 "Honor de Dojo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hemos llegado al final de nuestra misión de hoy. Antes de irnos, les pido que cada equipo pase al frente y me entregue las Magic Tablets. ¡Gracias por su gran trabajo!
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
